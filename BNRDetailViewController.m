@@ -26,6 +26,8 @@
 @end
 
 @implementation BNRDetailViewController
+
+
 - (IBAction)backgroundTapped:(id)sender
 {
     [self.view endEditing:YES];
@@ -151,4 +153,5 @@
     [[BNRImageStore sharedStore] deleteImageForKey:self.item.itemKey];
     self.imageView.image = nil;
 }
+
 @end
