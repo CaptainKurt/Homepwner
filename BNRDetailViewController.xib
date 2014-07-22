@@ -139,7 +139,6 @@
                 <constraint firstItem="uAz-CI-ZJS" firstAttribute="leading" secondItem="r83-Qd-6T2" secondAttribute="trailing" constant="4" id="hkk-VH-mcW"/>
                 <constraint firstItem="koP-C1-M9N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="110" id="igP-ZE-AsX"/>
                 <constraint firstItem="uAz-CI-ZJS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="kLU-GQ-Dg6"/>
-                <constraint firstItem="Pi4-51-Wbe" firstAttribute="top" secondItem="a66-wQ-pWc" secondAttribute="bottom" constant="8" symbolic="YES" id="kmD-JF-Jfv"/>
                 <constraint firstItem="jqh-2s-GlH" firstAttribute="baseline" secondItem="a66-wQ-pWc" secondAttribute="baseline" constant="1" id="ncU-34-1U4"/>
                 <constraint firstItem="8ZX-n4-Nc3" firstAttribute="leading" secondItem="TXn-Rs-fFe" secondAttribute="trailing" constant="7" id="ne0-jR-92e"/>
                 <constraint firstAttribute="trailing" secondItem="koP-C1-M9N" secondAttribute="trailing" constant="110" id="pFv-1S-hfi"/>

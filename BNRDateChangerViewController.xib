@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-RA-z7Y">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-RA-z7Y">
                     <rect key="frame" x="0.0" y="142" width="320" height="162"/>
                     <date key="date" timeIntervalSinceReferenceDate="426889676.848046">
                         <!--<__NSDate Class=2014-07-12 20:27:56 +0000 timeInterval=426889676.848046 ISO8601=2014-07-12T16:27:56.848-0400>-->
@@ -23,6 +23,11 @@
                 </datePicker>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7gU-RA-z7Y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="142" id="fI1-On-2bb"/>
+                <constraint firstAttribute="trailing" secondItem="7gU-RA-z7Y" secondAttribute="trailing" id="v0a-hC-GMK"/>
+                <constraint firstItem="7gU-RA-z7Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x2L-ml-Qeb"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
