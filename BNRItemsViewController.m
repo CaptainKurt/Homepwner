@@ -168,8 +168,14 @@ titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
     
     detailViewController.item = newItem;
     
+    detailViewController.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
+    
     UINavigationController *navController = [[UINavigationController alloc]
                                              initWithRootViewController:detailViewController];
+    
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentViewController:navController animated:YES completion:NULL];
 }
