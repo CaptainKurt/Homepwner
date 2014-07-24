@@ -12,6 +12,8 @@
 
 @interface BNRDetailViewController : UIViewController
 
+- (instancetype)initForNewItem:(BOOL)isNew;
+
 @property (strong, nonatomic) BNRItem *item;
 
 @end
