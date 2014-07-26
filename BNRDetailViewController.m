@@ -260,8 +260,10 @@
         image = info[UIImagePickerControllerEditedImage];
     }
     else {
-    image = info[UIImagePickerControllerOriginalImage];
+        image = info[UIImagePickerControllerOriginalImage];
     }
+    
+    [self.item setThumbnailFromImage:image];
     
     // Store the image in the BNRImageStore for this key
     [[BNRImageStore sharedStore] setImage:image

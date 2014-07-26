@@ -11,6 +11,7 @@
 #import "BNRDetailViewController.h"
 #import "BNRItemStore.h"
 #import "BNRItem.h"
+#import "BNRItemCell.h"
 
 @interface BNRItemsViewController ()
 
@@ -31,7 +32,12 @@
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    // Load the NIB file
+    UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:nil];
+    
+    // Register this NIB, which contains the cell
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
     
 }
 
@@ -70,16 +76,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger noMore = [[[BNRItemStore sharedStore] allItems] count];
+    
     // Get a new or recycled cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
+    BNRItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRItemCell"
                                                             forIndexPath:indexPath];
     
-    // Set the text on the cell with the description of the item that is at the nth index of items, where     n = row this cell will appear in on the tableview
+    // Set the text on the cell with the description of the item that is at the nth index of items, where n = row this cell will appear in on the tableview
     NSArray *items = [[BNRItemStore sharedStore] allItems];
     BNRItem *item = items[indexPath.row];
-    
-    cell.textLabel.text = [item description];
-    
+    if (indexPath.row == (noMore - 1)) {
+        cell.nameLabel.text = item.description;
+        cell.serialNumberLabel.text = nil;
+        cell.valueLabel.text = nil;
+    }
+    else {
+        // Configure the cell with the BNRItem
+        cell.nameLabel.text = item.itemName;
+        cell.serialNumberLabel.text = item.serialNumber;
+        cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+        cell.thumbnailView.image = item.thumbnail;
+    }
     return cell;
 }
 
@@ -92,7 +109,7 @@
     else
         return YES;
 
-                //THIS WORKS TOO!
+//                THIS WORKS TOO!
 //    NSString *dontMove = @"No more items!";
 //    UITableViewCell *itemCheck = [tableView cellForRowAtIndexPath:indexPath];
 //    if(itemCheck.textLabel.text == dontMove) {

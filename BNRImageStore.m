@@ -41,10 +41,22 @@
     
     if (self) {
         _dictionary = [[NSMutableDictionary alloc] init];
+        
+        // Register the image store as an observer with the notification center
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(clearCache:)
+                   name:UIApplicationDidReceiveMemoryWarningNotification
+                 object:nil];
     }
     return self;
 }
 
+- (void)clearCache:(NSNotification *)note
+{
+    NSLog(@"flush %lu images out of the cache", (unsigned long)[self.dictionary count]);
+    [self.dictionary removeAllObjects];
+}
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key
 {
@@ -53,8 +65,8 @@
     // Create full path for image
     NSString *imagePath = [self imagePathForKey:key];
     
-    // Turn image into JPEG data
-    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    // Turn image into PNG data
+    NSData *data = UIImagePNGRepresentation(image);
     
     // Write it to full path
     [data writeToFile:imagePath atomically:YES];

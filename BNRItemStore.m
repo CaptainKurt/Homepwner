@@ -51,7 +51,9 @@
         // If the array hadn't been saved previously, create a new empty one
         if (!_privateItems) {
             _privateItems = [[NSMutableArray alloc] init];
+            
             NSString *noMore = @"No more items!";
+            
             [self.privateItems addObject:noMore];
         }
         
