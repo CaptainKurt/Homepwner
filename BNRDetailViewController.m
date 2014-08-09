@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
+@property (weak,nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
 - (IBAction)dateButton:(UIButton *)sender;
 
 @end
@@ -53,8 +57,8 @@
     // Set the vertical priorities to be less than those of the other subviews
     [self.imageView setContentHuggingPriority:200
                                       forAxis:UILayoutConstraintAxisVertical];
-    [self.imageView setContentHuggingPriority:200
-                                      forAxis:UILayoutConstraintAxisHorizontal];
+    [self.imageView setContentCompressionResistancePriority:700
+                                      forAxis:UILayoutConstraintAxisVertical];
     
     NSDictionary *nameMap = @{@"imageView" : self.imageView,
                               @"dateLabel" : self.dateLabel,
@@ -112,6 +116,8 @@
     
     // Use that image to put on the screen in the imageView
     self.imageView.image = imageToDisplay;
+    
+    [self updateFonts];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -148,9 +154,23 @@
                                            action:@selector(cancel:)];
             self.navigationItem.leftBarButtonItem = cancelItem;
         }
+        
+        // Make sure this is NOT in the if (isNew) { } block of code
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver:self
+                          selector:@selector(updateFonts)
+                              name:UIContentSizeCategoryDidChangeNotification
+                            object:nil];
     }
     
     return self;
+}
+
+// Remove the class as an observer
+- (void)dealloc
+{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self];
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -326,6 +346,22 @@
 - (IBAction)backgroundTapped:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+
+#pragma mark - 
+
+- (void)updateFonts
+{
+    UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    self.nameLabel.font = font;
+    self.serialNumberLabel.font = font;
+    self.valueLabel.font = font;
+    
+    self.nameField.font = font;
+    self.serialNumberField.font = font;
+    self.valueField.font = font;
 }
 
 

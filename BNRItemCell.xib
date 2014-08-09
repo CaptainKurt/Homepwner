@@ -14,19 +14,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-qB-eGb">
-                        <rect key="frame" x="50" y="0.0" width="200" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="5pD-qZ-iQ1"/>
-                        </constraints>
+                        <rect key="frame" x="50" y="0.0" width="200" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z6-6i-5wF">
-                        <rect key="frame" x="50" y="23" width="200" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="xAH-uy-W6d"/>
-                        </constraints>
+                        <rect key="frame" x="50" y="27" width="200" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -34,7 +28,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hgc-Q4-O45">
                         <rect key="frame" x="2" y="2" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Aa0-7b-fvN"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="Aa0-7b-fvN"/>
                             <constraint firstAttribute="height" constant="40" id="lG6-Q2-ups"/>
                         </constraints>
                     </imageView>
@@ -73,6 +67,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageViewHeightConstraint" destination="lG6-Q2-ups" id="nUw-lc-Rpz"/>
                 <outlet property="nameLabel" destination="7HO-qB-eGb" id="OLE-zw-cCL"/>
                 <outlet property="serialNumberLabel" destination="5z6-6i-5wF" id="dWW-0e-lx8"/>
                 <outlet property="thumbnailView" destination="hgc-Q4-O45" id="M5Y-0y-Nx1"/>
